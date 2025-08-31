@@ -112,6 +112,8 @@ cd quickpay-digital-wallet
 ```
 
 ## Project Structure
+
+```bash
 frontend/
  ├─ src/
  │   ├─ components/
@@ -130,3 +132,5 @@ backend/
  │   ├─ middlewares/
  │   ├─ utils/
  │   └─ server.ts
+
+```
