@@ -1,69 +1,132 @@
-# React + TypeScript + Vite
+# QuickPay Digital Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured **digital wallet system** built with **React.js, TypeScript, TailwindCSS, Redux, and Node.js**. QuickPay allows Users, Agents, and Admins to manage transactions securely with role-based dashboards, advanced filtering, and interactive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+1. [Project Overview](#project-overview)  
+2. [Features](#features)  
+3. [Tech Stack](#tech-stack)  
+4. [Installation](#installation)  
+5. [Usage](#usage)  
+6. [Project Structure](#project-structure)  
+7. [Screenshots](#screenshots)  
+8. [License](#license)  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Overview
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+QuickPay is designed to handle **digital payments** efficiently with role-based access:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Public Landing Pages**: Home, About, Features, Pricing, FAQ, Contact  
+- **Authentication**: Login, Registration, Role-based redirection, JWT-based auth  
+- **User Dashboard**: Wallet balance, quick actions, transaction history, deposit, withdraw, send money, profile management  
+- **Agent Dashboard**: Cash-in/out management, transaction overview, profile management  
+- **Admin Dashboard**: Overview of users/agents/transactions, user/agent management, advanced filtering, fee adjustments, profile management  
+
+The UI is **fully responsive**, interactive, and uses **skeleton loaders** for smooth user experience.
+
+---
+
+## Features
+
+### Public Pages
+- **Home Page**: Hero section, sticky navbar, call-to-action buttons, responsive layout  
+- **About Page**: Service story, mission, team details  
+- **Features Page**: List of features with icons and visuals  
+- **Pricing Page**: Subscription tiers and service fees (optional)  
+- **Contact Page**: Inquiry form with simulated submission  
+- **FAQ Page**: Common questions and answers  
+
+### Authentication
+- Login & Registration with role selection (User/Agent)  
+- JWT-based authentication  
+- Persisted login state and logout functionality  
+
+### User Dashboard
+- Wallet balance display  
+- Quick actions (Deposit, Withdraw, Send Money)  
+- Transaction history with **pagination**, **filters by type/date/amount**  
+- Profile management (update name, phone, password)  
+
+### Agent Dashboard
+- Overview with cash-in/out summary  
+- Deposit and withdraw money for users  
+- Transaction history and optional commission history  
+- Profile management  
+
+### Admin Dashboard
+- Total users, agents, transaction count, and volume  
+- Manage users and agents (block, unblock, approve, suspend)  
+- View all transactions with **search**, **filters**, and **pagination**  
+- Adjust system fees/limits (optional)  
+- Profile management  
+
+### General Features
+- Role-based navigation  
+- Form validation and error handling  
+- Data visualization: cards, tables, bar/pie charts  
+- Toast notifications for success/error messages  
+- Guided tour (react-joyride or driver.js)  
+- Light/Dark theme toggle  
+- Skeleton loaders for better UX  
+- Fully responsive and accessible design  
+
+---
+
+## Tech Stack
+
+**Frontend**
+- React.js + TypeScript  
+- TailwindCSS  
+- Redux Toolkit & RTK Query  
+- React Router DOM  
+- React Icons  
+- React Hook Form + Zod (form validation)  
+- react-joyride (guided tour)  
+- Sonner (toast notifications)  
+
+**Backend**
+- Node.js + Express.js  
+- MongoDB + Mongoose  
+- JWT Authentication  
+- Nodemailer (email notifications)  
+- EJS templating for email templates  
+
+**Other Tools**
+- ESLint & Prettier  
+- Docker (optional)  
+- Vite for React setup  
+
+---
+
+## Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/quickpay-digital-wallet.git
+cd quickpay-digital-wallet
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Project Structure
+frontend/
+ ├─ src/
+ │   ├─ components/
+ │   ├─ pages/
+ │   ├─ redux/
+ │   ├─ utils/
+ │   └─ App.tsx
+backend/
+ ├─ src/
+ │   ├─ modules/
+ │   │   ├─ auth/
+ │   │   ├─ user/
+ │   │   ├─ admin/
+ │   │   └─ agent/
+ │   ├─ config/
+ │   ├─ middlewares/
+ │   ├─ utils/
+ │   └─ server.ts
