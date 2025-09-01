@@ -1,20 +1,21 @@
-import { Button } from "@/components/ui/button";
+
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 // import { useGetAllAgentsQuery, useUpdateAgentStatusMutation } from "@/redux/features/admin/admin.api";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { toast } from "sonner";
-import { useGetAllAgentQuery } from "@/redux/features/admin/admin.api";
+import { useGetAllAgentQuery, useUpdateAgentStatusMutation } from "@/redux/features/admin/admin.api";
 
 export default function ManageAgents() {
     const { data, isLoading } = useGetAllAgentQuery(undefined);
-    //   const [updateAgentStatus] = useUpdateAgentStatusMutation();
+      const [updateAgentStatus] = useUpdateAgentStatusMutation();
     console.log(data?.data?.users);
 
     const handleStatusChange = async (agentId: string, newStatus: string) => {
+        console.log(agentId, newStatus);
         const toastId = toast.loading("Updating...");
         try {
-            //   const res = await updateAgentStatus({ agentId, status: newStatus }).unwrap();
+              const res = await updateAgentStatus({ agentId, status: newStatus }).unwrap();
             if (res.success) {
                 toast.success("Status updated successfully!", { id: toastId });
             } else {

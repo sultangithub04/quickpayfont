@@ -2,7 +2,7 @@ import { DeleteConfirmation } from "@/components/DeleteConfirmation";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useDeleteUserMutation, useGetAllUserQuery,  } from "@/redux/features/admin/admin.api";
+import { useDeleteUserMutation, useGetAllUserQuery, } from "@/redux/features/admin/admin.api";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
@@ -16,10 +16,11 @@ export default function GetAllUser() {
     const handleDeleteUser = async (userId: string) => {
         const toastId = toast.loading("Deleting...");
         try {
-            const res = await deleteUser(userId).unwrap();
+            await deleteUser(userId).unwrap();
             toast.success("Removed", { id: toastId });
         } catch (error) {
             toast.error("Failed to delete", { id: toastId });
+            console.log(error);
         }
     };
     const handleStatusChange = async (userId: string, newStatus: string) => {
@@ -30,6 +31,7 @@ export default function GetAllUser() {
             toast.success("Status updated", { id: toastId });
         } catch (error) {
             toast.error("Failed to update", { id: toastId });
+            console.log(error);
         }
     };
 

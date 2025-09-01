@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router";
 import { toast } from "sonner";
-import z, { email } from "zod";
+import z from "zod";
 
 
 const FormSchema = z.object({
@@ -28,7 +28,7 @@ export default function Verify() {
     const [verifyOtp] = useVerifyOtpMutation()
     const [timer, setTimer] = useState(5)
 
-    const { data, isLoading, error } = useGetEmailQuery(phone, {
+    const { data, isLoading } = useGetEmailQuery(phone, {
         skip: !phone, // only run if phone exists
     });
     if (isLoading) {
@@ -40,11 +40,11 @@ export default function Verify() {
 
     const [confirmed, setConfirmed] = useState(false)
 
-    // useEffect(() => {
-    //     if (!phone) {
-    //         navigate('/')
-    //     }
-    // }, [phone])
+    useEffect(() => {
+        if (!phone) {
+            navigate('/')
+        }
+    }, [phone])
 
     useEffect(() => {
         const timerId = setInterval(() => {
@@ -63,14 +63,14 @@ export default function Verify() {
     })
 
     const handleSendOtp = async () => {
-        // const toasId = toast.loading("sending OTP")
+        const toasId = toast.loading("sending OTP")
         setConfirmed(true)
         setTimer(5)
         try {
-            // const res = await sendOtp({ email: email }).unwrap()
-            // if (res.success) {
-            //     toast.success("OTP send", { id: toasId })
-            // }
+            const res = await sendOtp({ email: email }).unwrap()
+            if (res.success) {
+                toast.success("OTP send", { id: toasId })
+            }
 
         } catch (error) {
             console.log(error);

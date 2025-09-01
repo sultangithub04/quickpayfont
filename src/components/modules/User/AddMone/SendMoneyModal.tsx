@@ -11,12 +11,12 @@ import {
 } from "@/components/ui/dialog"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useSendMoneyMutation, useToUpMoneyMutation, useWithDrawMutation } from "@/redux/features/user/user.api"
+import { useSendMoneyMutation} from "@/redux/features/user/user.api"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
-import z, { number } from "zod"
+import z from "zod"
 const sendSchema = z.object({
     phone: z.string().min(11).max(11),
     amount: z.number(),

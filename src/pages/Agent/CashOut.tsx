@@ -1,8 +1,4 @@
 import { CashoutModal } from "@/components/modules/Agent/CashOutModal";
-import { SendMoneyModal } from "@/components/modules/User/AddMone/SendMoneyModal";
-
-import { WithdrawModal } from "@/components/modules/User/AddMone/WithdrawModal";
-import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useTransactionInfoQuery, useWaletInfoQuery } from "@/redux/features/user/user.api";
 import LoadingSpinner from "@/utils/LoadingSpinner";

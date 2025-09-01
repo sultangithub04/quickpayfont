@@ -1,17 +1,16 @@
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
 import { Input } from "@/components/ui/input"
-import { GalleryVerticalEnd } from "lucide-react"
+
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Password from "@/components/ui/password"
-import { useRegisterMutation, useUsrInfoQuery } from "@/redux/features/auth/auth.api"
+import { useUsrInfoQuery } from "@/redux/features/auth/auth.api"
 import { toast } from "sonner"
-import { Link, useNavigate } from "react-router"
-import Logo from "@/assets/icons/Logo"
+
 import { useUpdateUserMutation } from "@/redux/features/user/user.api"
 import { FaHandHoldingUsd } from "react-icons/fa"
 const registerSchema = z.object({

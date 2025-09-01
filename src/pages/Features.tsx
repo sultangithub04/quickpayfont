@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import {  type FC, type JSX } from 'react'
 import { FaMobileAlt, FaMoneyBillWave, FaExchangeAlt, FaLock, FaBolt, FaUsers } from 'react-icons/fa'
 
 interface Feature {

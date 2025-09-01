@@ -1,6 +1,5 @@
 
 import { CashDepositByUserModal } from "@/components/modules/User/AddMone/CashDepositByUserModal";
-import { WithdrawModal } from "@/components/modules/User/AddMone/WithdrawModal";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useTransactionInfoQuery, useWaletInfoQuery } from "@/redux/features/user/user.api";
 import LoadingSpinner from "@/utils/LoadingSpinner";

@@ -1,5 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
-import type { IResponse, ISendMoney, ISendOtp, IVerifyOtp } from "@/types";
+import type { IResponse, ISendMoney } from "@/types";
 
 
 

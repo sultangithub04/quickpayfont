@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FaMoneyBillWave, FaPlusCircle, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaMoneyBillWave, FaPlusCircle, FaArrowDown } from "react-icons/fa";
 import { MdSendToMobile } from "react-icons/md";
 import { useTransactionInfoQuery, useWaletInfoQuery } from "@/redux/features/user/user.api";
 import { Link } from "react-router";
@@ -8,9 +8,9 @@ import LoadingSpinner from "@/utils/LoadingSpinner";
 
 interface Transaction {
   id: string;
-  type: "send" | "topup" | "withdraw";
+  type: "send" | "topup" | "withdraw" |"cash_in"|"add_money";
   amount: number;
-  date: string;
+  updatedAt: string;
 }
 
 export default function Overview() {
@@ -20,7 +20,7 @@ export default function Overview() {
     return <LoadingSpinner />
   }
 console.log(data?.data);
-
+ const transactions: Transaction[] = data?.data ?? [];
   const getTypeIcon = (type: Transaction["type"]) => {
     switch (type) {
       case "send":
@@ -76,7 +76,7 @@ console.log(data?.data);
         </CardHeader>
         <CardContent>
           <ul className="space-y-3">
-            {data?.data.slice(-3).map((tx) => (
+            {transactions.slice(-3).map((tx) => (
               <li
                 key={tx.id}
                 className="flex items-center justify-between bg-gray-50 p-3 rounded-lg shadow-sm"

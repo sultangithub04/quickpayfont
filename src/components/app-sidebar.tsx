@@ -1,7 +1,4 @@
 import * as React from "react"
-
-import { SearchForm } from "@/components/search-form"
-import { VersionSwitcher } from "@/components/version-switcher"
 import {
   Sidebar,
   SidebarContent,
@@ -16,10 +13,7 @@ import {
 } from "@/components/ui/sidebar"
 import Logo from "@/assets/icons/Logo"
 import { Link } from "react-router"
-import { adminSidebarItems } from "@/routes/adminSidebarItems"
-import { userSidebarItems } from "@/routes/userSidebarItems"
 import { getSidebarItems } from "@/utils/getSidebarItems"
-import { role } from "@/constants/role"
 import { useUsrInfoQuery } from "@/redux/features/auth/auth.api"
 
 // This is sample data.

@@ -3,12 +3,10 @@ import AdmOverView from "@/pages/Admin/AdmOverView";
 import GetAllUser from "@/pages/Admin/GetAllUser";
 import Manageagents from "@/pages/Admin/Manageagents";
 import ViewAllTransaction from "@/pages/Admin/ViewAllTransaction";
-import Overview from "@/pages/User/Overview";
 import UpdateUser from "@/pages/User/UpdateUser";
-import Welcome from "@/pages/User/UpdateUser";
 import type { ISidebarItem } from "@/types";
-import { lazy } from "react";
-const Analytics = lazy(() => import("@/pages/Admin/Analytics"))
+// import { lazy } from "react";
+// const Analytics = lazy(() => import("@/pages/Admin/Analytics"))
 
 export const adminSidebarItems: ISidebarItem[] = [
   {

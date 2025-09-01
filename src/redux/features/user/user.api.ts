@@ -1,5 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
-import type { IResponse, ISendMoney, ISendOtp, IVerifyOtp } from "@/types";
+import type { IResponse, ISendMoney } from "@/types";
+import type { ICashDUser } from "@/types/auth.type";
 
 
 
@@ -14,7 +15,7 @@ export const userApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["USER"]
         }),
-        withDraw: builder.mutation<IResponse<null>, ISendOtp>({
+        withDraw: builder.mutation<IResponse<null>, ICashDUser>({
             query: (withDrawInfo) => ({
                 url: "/transactions/withdraw",
                 method: "PATCH",
@@ -22,7 +23,7 @@ export const userApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["USER"]
         }),
-        cashwithDrawbyUser: builder.mutation<IResponse<null>, ISendOtp>({
+        cashwithDrawbyUser: builder.mutation<IResponse<null>, ICashDUser>({
             query: (withDrawInfo) => ({
                 url: "/transactions/cash-out-user",
                 method: "PATCH",
@@ -30,7 +31,7 @@ export const userApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["USER"]
         }),
-        cashDepositbyUser: builder.mutation<IResponse<null>, ISendOtp>({
+        cashDepositbyUser: builder.mutation<IResponse<null>, ICashDUser>({
             query: (withDrawInfo) => ({
                 url: "/transactions/cash-in-user",
                 method: "PATCH",

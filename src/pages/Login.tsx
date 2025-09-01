@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { GalleryVerticalEnd } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -10,6 +9,8 @@ import { useLoginMutation } from "@/redux/features/auth/auth.api"
 import { toast } from "sonner"
 import { Link, useNavigate } from "react-router"
 import Logo from "@/assets/icons/Logo"
+import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
+import type { SerializedError } from "@reduxjs/toolkit"
 const loginSchema = z.object({
     phone: z.string().min(11).max(11),
     password: z.string().min(6),
@@ -42,15 +43,23 @@ export default function Login() {
             }
 
             console.log(res);
-        } catch (err) {
-            if (err?.data?.message === "Password does not match") {
-                toast.error("Invalid credential")
-            }
-            if (err?.data?.message === "user does not verify") {
-                toast.error("Your account is not verified")
-                navigate("/verify", { state: userInfo.phone })
-            }
+        } catch (error) {
+            const err = error as FetchBaseQueryError | SerializedError
 
+            if ("data" in err && typeof err.data === "object") {
+                const errData = err.data as { message?: string }
+
+                if (errData.message === "Password does not match") {
+                    toast.error("Invalid credential")
+                }
+
+                if (errData.message === "user does not verify") {
+                    toast.error("Your account is not verified")
+                    navigate("/verify", { state: userInfo.phone })
+                }
+            } else {
+                toast.error("Something went wrong")
+            }
         }
     }
 
@@ -110,7 +119,7 @@ export default function Login() {
 
                             </form>
                         </Form>
-                     
+
                         <p className='text-center font-semibold mt-2'>Don't Have an account? <Link className='text-chart-1' to='/register'>register</Link> </p>
                     </div>
                 </div>

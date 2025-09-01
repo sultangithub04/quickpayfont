@@ -1,18 +1,16 @@
-import { FaLock } from "react-icons/fa";
+import { FaExclamationTriangle } from "react-icons/fa";
 import { Link } from "react-router";
 
-
-export default function Unauthorized() {
+export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 text-gray-800 p-6">
       {/* Icon */}
-      <FaLock className="text-red-500 text-6xl mb-4" />
+      <FaExclamationTriangle className="text-yellow-500 text-6xl mb-4" />
 
       {/* Heading */}
-      <h1 className="text-3xl font-bold mb-2">Unauthorized Access</h1>
+      <h1 className="text-4xl font-bold mb-2">404 - Page Not Found</h1>
       <p className="text-gray-600 text-center max-w-md mb-6">
-        You do not have permission to view this page. Please contact the
-        administrator if you believe this is a mistake.
+        The page you are looking for doesn’t exist or has been moved.
       </p>
 
       {/* Actions */}
@@ -24,10 +22,10 @@ export default function Unauthorized() {
           Go Home
         </Link>
         <Link
-          to="/login"
+          to="/contact"
           className="px-5 py-2 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 transition"
         >
-          Login
+          Contact Support
         </Link>
       </div>
     </div>

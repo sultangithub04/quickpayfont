@@ -1,5 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
-import type { IResponse, ISendMoney, ISendOtp, IVerifyOtp } from "@/types";
+import type { IResponse } from "@/types";
+import type { IStatus } from "@/types/auth.type";
 
 
 
@@ -50,6 +51,13 @@ export const adminApi = baseApi.injectEndpoints({
                 method: "GET",
             }),
         }),
+        updateAgentStatus: builder.mutation<IResponse<null>, IStatus>({
+            query: (id) => ({
+                url: `/agents/approve/${id}`,
+                method: "PATCH",
+            }),
+            invalidatesTags: ["USER"]
+        }),
 
 
 
@@ -57,5 +65,5 @@ export const adminApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useGetOverViewQuery, useGetAllAgentQuery,
+export const { useGetOverViewQuery, useGetAllAgentQuery,useUpdateAgentStatusMutation,
     useGetAllTransactionQuery, useGetAllUserQuery, useDeleteUserMutation } = adminApi
