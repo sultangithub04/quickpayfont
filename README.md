@@ -67,9 +67,8 @@ The UI is **fully responsive**, interactive, and uses **skeleton loaders** for s
 ### General Features
 - Role-based navigation  
 - Form validation and error handling  
-- Data visualization: cards, tables, bar/pie charts  
+- Data visualization: cards, tables
 - Toast notifications for success/error messages  
-- Guided tour (react-joyride or driver.js)  
 - Light/Dark theme toggle  
 - Skeleton loaders for better UX  
 - Fully responsive and accessible design  
@@ -82,10 +81,9 @@ The UI is **fully responsive**, interactive, and uses **skeleton loaders** for s
 - React.js + TypeScript  
 - TailwindCSS  
 - Redux Toolkit & RTK Query  
-- React Router DOM  
+- React Router  
 - React Icons  
-- React Hook Form + Zod (form validation)  
-- react-joyride (guided tour)  
+- React Hook Form + Zod (form validation)   
 - Sonner (toast notifications)  
 
 **Backend**
@@ -95,21 +93,17 @@ The UI is **fully responsive**, interactive, and uses **skeleton loaders** for s
 - Nodemailer (email notifications)  
 - EJS templating for email templates  
 
-**Other Tools**
-- ESLint & Prettier  
-- Docker (optional)  
-- Vite for React setup  
-
 ---
 
 ## Installation
 
 1. **Clone the repository**
 
-git clone
+# git clone
+
 ```bash
  https://github.com/yourusername/quickpay-digital-wallet.git
-cd quickpay-digital-wallet
+ cd quickpay-digital-wallet
 ```
 
 2. **Install Dependencies**
