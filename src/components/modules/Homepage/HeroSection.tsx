@@ -1,3 +1,10 @@
+import image1 from "@/assets/images/image1.jpg";
+import image2 from "@/assets/images/image2.jpg";
+import image3 from "@/assets/images/image3.jpg";
+import image4 from "@/assets/images/image4.jpg";
+import image5 from "@/assets/images/image5.jpg";
+import image6 from "@/assets/images/image6.png";
+
 import { Card, CardContent } from "@/components/ui/card"
 import {
     Carousel,
@@ -21,15 +28,17 @@ const services = [
     { icon: <FaBolt className="text-gray-600 text-4xl" />, label: "Pay Bill" },
 ];
 
+
+
 export default function HeroSection() {
     return (
         <div>
             <section className="flex justify-center py-4 bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
 
-      
 
- 
-  
+
+
+
                 <Carousel
                     className="container"
                     plugins={[
@@ -40,13 +49,7 @@ export default function HeroSection() {
                     ]}
                 >
                     <CarouselContent>
-                        {[
-                            "/src/assets/images/image1.jpg",
-                            "/src/assets/images/image2.jpg",
-                            "/src/assets/images/image3.jpg",
-                            "/src/assets/images/image4.jpg",
-                            "/src/assets/images/image5.jpg",
-                            "/src/assets/images/image6.png",
+                        {[image1, image2, image3, image4, image5, image6
                         ].map((src, index) => (
                             <CarouselItem key={index}>
                                 <div className="p-2">
@@ -66,7 +69,7 @@ export default function HeroSection() {
                     <CarouselPrevious className="text-gray-800 dark:text-gray-200" />
                     <CarouselNext className="text-gray-800 dark:text-gray-200" />
                 </Carousel>
-               
+
 
 
             </section>

@@ -12,8 +12,7 @@ A full-featured **digital wallet system** built with **React.js, TypeScript, Tai
 4. [Installation](#installation)  
 5. [Usage](#usage)  
 6. [Project Structure](#project-structure)  
-7. [Screenshots](#screenshots)  
-8. [License](#license)  
+ 
 
 ---
 
@@ -106,10 +105,27 @@ The UI is **fully responsive**, interactive, and uses **skeleton loaders** for s
 ## Installation
 
 1. **Clone the repository**
+
+git clone
 ```bash
-git clone https://github.com/yourusername/quickpay-digital-wallet.git
+ https://github.com/yourusername/quickpay-digital-wallet.git
 cd quickpay-digital-wallet
 ```
+
+2. **Install Dependencies**
+
+```bash
+npm install
+```
+
+
+
+3. **Start the Development Server**
+```bash
+npm run dev
+```
+
+
 
 ## Project Structure
 

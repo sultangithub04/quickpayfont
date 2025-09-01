@@ -11,7 +11,7 @@ export const authApi = baseApi.injectEndpoints({
                 method: "POST",
                 data: userInfo
             }),
-            invalidatesTags: ["USER", "AGENT"]
+            invalidatesTags: ["USER", "AGENT", "ADMIN"]
         }),
         sendOtp: builder.mutation<IResponse<null>, ISendOtp>({
             query: (userInfo) => ({
@@ -33,28 +33,44 @@ export const authApi = baseApi.injectEndpoints({
                 method: "POST",
                 data: userInfo,
             }),
-            invalidatesTags: ["USER", "AGENT"]
+            invalidatesTags: ["USER", "AGENT", "ADMIN"]
         }),
+        // logout: builder.mutation({
+        //     query: () => ({
+        //         url: "/auth/logout",
+        //         method: "POST",
+        //     }),
+        //     invalidatesTags: ["USER", "AGENT", "ADMIN"]
+        // }),
+
         logout: builder.mutation({
             query: () => ({
                 url: "/auth/logout",
                 method: "POST",
+                credentials: "include",
             }),
-            invalidatesTags: ["USER", "AGENT"]
+            async onQueryStarted(_arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled;
+                    dispatch(baseApi.util.resetApiState());
+                // eslint-disable-next-line no-empty
+                } catch { }
+            },
         }),
+
         getEmail: builder.query({
             query: (phone) => ({
                 url: `/auth/get-email?phone=${phone}`,
                 method: "GET",
             }),
-            providesTags: ["USER", "AGENT"]
+            providesTags: ["USER", "AGENT", "ADMIN"]
         }),
         usrInfo: builder.query({
             query: () => ({
                 url: "/users/me",
                 method: "GET",
             }),
-            providesTags: ["USER", "AGENT"]
+            providesTags: ["USER", "AGENT", "ADMIN"]
         }),
     })
 })

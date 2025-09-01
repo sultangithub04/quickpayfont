@@ -11,6 +11,7 @@ import { useRegisterMutation } from "@/redux/features/auth/auth.api"
 import { toast } from "sonner"
 import { Link, useNavigate } from "react-router"
 import Logo from "@/assets/icons/Logo"
+import registerImage from "@/assets/images/login.svg";
 const registerSchema = z.object({
     name: z.string().min(2, { error: "Name is to short" }).max(50),
     email: z.email(),
@@ -63,7 +64,7 @@ export default function Register() {
 
             <div className="bg-muted relative hidden lg:block">
                 <img
-                    src="/src/assets/images/login.svg"
+                    src={registerImage}
                     alt="Image"
                     className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
                 />

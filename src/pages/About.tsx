@@ -1,3 +1,6 @@
+import image1 from "@/assets/images/ceo.jpeg";
+import image2 from "@/assets/images/cto.jpg";
+import image3 from "@/assets/images/md.jpg";
 
 
 import type { FC } from 'react'
@@ -13,17 +16,17 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Alice Rahman',
     role: 'CEO',
-    photo: '/src/assets/images/md.jpg',
+    photo: image1,
   },
   {
     name: 'John Karim',
     role: 'CTO',
-    photo: '/src/assets/images/ceo.jpeg',
+    photo: image2,
   },
   {
     name: 'Sara Ahmed',
     role: 'Product Manager',
-    photo: '/src/assets/images/cto.jpg',
+    photo: image3,
   },
 ]
 

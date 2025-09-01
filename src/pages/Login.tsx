@@ -11,6 +11,8 @@ import { Link, useNavigate } from "react-router"
 import Logo from "@/assets/icons/Logo"
 import type { FetchBaseQueryError } from "@reduxjs/toolkit/query"
 import type { SerializedError } from "@reduxjs/toolkit"
+import loginImage from "@/assets/images/login.svg";
+
 const loginSchema = z.object({
     phone: z.string().min(11).max(11),
     password: z.string().min(6),
@@ -126,7 +128,7 @@ export default function Login() {
             </div>
             <div className="bg-muted relative hidden lg:block">
                 <img
-                    src="/src/assets/images/login.svg"
+                    src={loginImage}
                     alt="Image"
                     className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
                 />

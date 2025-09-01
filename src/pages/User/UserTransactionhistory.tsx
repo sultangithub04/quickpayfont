@@ -11,7 +11,7 @@ export default function UserTransactionhistory() {
     // const [limit, setLimit]=useState(10)
     console.log(currentPage);
     const { data } = useTransactionInfoQuery({ page: currentPage })
-    console.log("take data", data);
+    // console.log("take data", data);
     const { data: balance, isLoading } = useWaletInfoQuery(undefined)
     if (isLoading) {
         return <LoadingSpinner/>
