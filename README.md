@@ -95,11 +95,13 @@ The UI is **fully responsive**, interactive, and uses **skeleton loaders** for s
 
 ---
 
+Live URL: https://quickpayfont.vercel.app
+
 ## Installation
 
 1. **Clone the repository**
 
-# git clone
+**git clone**
 
 ```bash
  https://github.com/yourusername/quickpay-digital-wallet.git
