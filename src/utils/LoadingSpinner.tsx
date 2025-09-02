@@ -23,3 +23,4 @@ const LoadingSpinner: FC<LoadingSpinnerProps> = ({ smallHeight = false }) => {
 }
 
 export default LoadingSpinner
+
