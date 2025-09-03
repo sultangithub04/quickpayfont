@@ -88,7 +88,8 @@ export default function Verify() {
             if (res.success) {
                 toast.success("OTP verified", { id: toasId })
                 setConfirmed(true)
-                navigate("/")
+                navigate("/login")
+            
             }
         } catch (error) {
             console.log(error);
@@ -162,7 +163,7 @@ export default function Verify() {
                         <CardHeader>
                             <CardTitle className="text-xl">Verify your email address</CardTitle>
                             <CardDescription>
-                                we will send you and OTM at <br />{email}
+                                we will send you  OTP at <br />{email}
                             </CardDescription>
 
                         </CardHeader>
