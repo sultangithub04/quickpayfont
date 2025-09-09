@@ -25,14 +25,24 @@ export const agentApi = baseApi.injectEndpoints({
             query: () => ({
                 url: "/system/commission",
                 method: "GET",
-            
+
             }),
+        }),
+        agentTransactioHistory: builder.query({
+            query: (params) => ({
+                url: "/transactions/agent-transaction-history",
+                method: "GET",
+                params
+            }),
+            providesTags: ["USER"],
+
+
         }),
 
 
-  
+
 
     })
 })
 
-export const { useCashInMutation,useCashOutMutation, useCommissionDetailsQuery} = agentApi
+export const { useCashInMutation, useCashOutMutation, useCommissionDetailsQuery, useAgentTransactioHistoryQuery } = agentApi

@@ -1,17 +1,18 @@
 
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useTransactionInfoQuery, useWaletInfoQuery } from "@/redux/features/user/user.api";
+import { useAgentTransactioHistoryQuery } from "@/redux/features/agent/agent.api";
+import { useWaletInfoQuery } from "@/redux/features/user/user.api";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { useState } from "react";
 
 
-export default function UserTransactionhistory() {
+export default function AgentTransactionhistory() {
     const [currentPage, setCurrentPage] = useState(1);
     // const [limit, setLimit]=useState(10)
     console.log(currentPage);
-    const { data } = useTransactionInfoQuery({ page: currentPage })
-    // console.log("take data", data);
+    const { data } = useAgentTransactioHistoryQuery({ page: currentPage })
+    console.log("take data", data);
     const { data: balance, isLoading } = useWaletInfoQuery(undefined)
     if (isLoading) {
         return <LoadingSpinner />
@@ -48,20 +49,20 @@ export default function UserTransactionhistory() {
                     </TableHeader>
                     <TableBody>
                         {
-                            data?.data?.map((item: { type: string,debit: string, credit: string, amount: string, status: string, date: string, receiverWallet:string, balance:number }) => (
+                            data?.data?.data?.map((item: {credit: string, debit:string, type: string, amount: string, status: string, date: string, receiverWallet:string, balance:number }) => (
                                 <TableRow>
                                     <TableCell className="">{new Date(item.date).toLocaleString()}</TableCell>
                                     <TableCell className="text-right">{item.type}</TableCell>
                                     <TableCell className="text-right">
-                                        {(item.type === "withdraw" || item.type === "send"|| item.type==="cash_out") ? "D" : "C"}
+                                        {(item.type === "withdraw" || item.type === "send"|| item.type==="cash_out") ? "C" : "D"}
                                     </TableCell>
                                     {/* <TableCell className="text-right">{item.amount}</TableCell> */}
                                     <TableCell className="text-right">
-                                        {(item.type === "withdraw" || item.type === "send"|| item.type==="cash_out") ? item.debit : 0}
+                                        {(item.type === "withdraw" || item.type === "send"|| item.type==="cash_out" || item.type==="cash_in") ? item.debit : 0}
                                     </TableCell>
 
                                     <TableCell className="text-right">
-                                        {(item.type === "withdraw" || item.type === "send") ? 0 : item.credit}
+                                        {(item.type === "withdraw" || item.type === "send"|| item.type==="cash_in") ? 0 : item.credit}
                                     </TableCell>
                                     <TableCell className="text-right">{item?.balance}</TableCell>
                                 </TableRow>

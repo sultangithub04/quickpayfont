@@ -15,7 +15,7 @@ interface Transaction {
   debit: string;
 }
 
-export default function Overview() {
+export default function AgentOverview() {
   const { data } = useTransactionInfoQuery(undefined)
   const { data: balance, isLoading } = useWaletInfoQuery(undefined)
   if (isLoading) {
@@ -49,7 +49,7 @@ console.log(data?.data);
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-3xl font-semibold text-gray-800">Tk. {balance?.balance ?? 0}.00 </p>
+          <p className="text-3xl font-semibold text-gray-800">Tk. {balance?.balance ?? 0} </p>
         </CardContent>
       </Card>
 
@@ -59,14 +59,11 @@ console.log(data?.data);
           <CardTitle>Quick Actions</CardTitle>
         </CardHeader>
         <CardContent className="flex gap-3 flex-wrap">
-          <Link type="button" to={"/user/sendmoney"} className="flex items-center gap-2">
-            <MdSendToMobile /> Send Money
-          </Link>
           <Button variant="secondary" className="flex items-center gap-2">
-            <FaPlusCircle /> <Link to={"/user/deposit"}>Deposit</Link>
+            <FaPlusCircle /> <Link to={"/agent/addmoney"}>Add Money</Link>
           </Button>
           <Button variant="destructive" className="flex items-center gap-2">
-            <FaArrowDown /><Link to={"/user/withdrawmoney"}>withDraw</Link>
+            <FaArrowDown /><Link to={"/agent/withdrawmoney"}>withDraw</Link>
           </Button>
         </CardContent>
       </Card>

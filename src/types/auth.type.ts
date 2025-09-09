@@ -22,3 +22,7 @@ export interface IStatus {
     status:string
     agentId: string
 }
+export interface IUStatus {
+    userId:string
+    status: string
+}

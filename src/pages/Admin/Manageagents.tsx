@@ -4,18 +4,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 // import { useGetAllAgentsQuery, useUpdateAgentStatusMutation } from "@/redux/features/admin/admin.api";
 import LoadingSpinner from "@/utils/LoadingSpinner";
 import { toast } from "sonner";
-import { useGetAllAgentQuery, useUpdateAgentStatusMutation } from "@/redux/features/admin/admin.api";
+import { useChangeStatusMutation, useGetAllAgentQuery } from "@/redux/features/admin/admin.api";
 
 export default function ManageAgents() {
     const { data, isLoading } = useGetAllAgentQuery(undefined);
-      const [updateAgentStatus] = useUpdateAgentStatusMutation();
+  const [changeStatus] = useChangeStatusMutation();
     console.log(data?.data?.users);
 
-    const handleStatusChange = async (agentId: string, newStatus: string) => {
-        console.log(agentId, newStatus);
+    const handleStatusChange = async (userId: string, newStatus: string) => {
+        console.log(userId, newStatus);
         const toastId = toast.loading("Updating...");
         try {
-              const res = await updateAgentStatus({ agentId, status: newStatus }).unwrap();
+              const res = await changeStatus({ userId, newStatus }).unwrap();
             if (res.success) {
                 toast.success("Status updated successfully!", { id: toastId });
             } else {
@@ -78,7 +78,7 @@ export default function ManageAgents() {
                                     <TableCell className="text-right">
                                         <Select
                                             defaultValue={agent?.isActive}
-                                            onValueChange={(val) => handleStatusChange(agent._id, val)}
+                                            onValueChange={(val) => handleStatusChange(agent.phone, val)}
                                         >
                                             <SelectTrigger className="w-[140px]">
                                                 <SelectValue placeholder="Change Status" />

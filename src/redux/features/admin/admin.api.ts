@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { baseApi } from "@/redux/baseApi";
 import type { IResponse } from "@/types";
 import type { IStatus } from "@/types/auth.type";
@@ -58,6 +59,21 @@ export const adminApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["USER"]
         }),
+        changeStatus: builder.mutation<IResponse<null>, { userId: string; newStatus: string }>({
+            query: ({ userId, newStatus }) => ({
+                url: `/admin/status/${userId}`,
+                method: "PATCH",
+                data: { isActive: newStatus }, 
+            }),
+            invalidatesTags: ["USER"],
+        }),
+        adminVerify: builder.mutation<IResponse<null>, string>({
+            query: (id) => ({
+                url: `/admin/verify/${id}`,
+                method: "PATCH",
+            }),
+            invalidatesTags: ["USER"]
+        }),
 
 
 
@@ -65,5 +81,5 @@ export const adminApi = baseApi.injectEndpoints({
     })
 })
 
-export const { useGetOverViewQuery, useGetAllAgentQuery,useUpdateAgentStatusMutation,
+export const { useGetOverViewQuery, useGetAllAgentQuery, useUpdateAgentStatusMutation, useChangeStatusMutation, useAdminVerifyMutation,
     useGetAllTransactionQuery, useGetAllUserQuery, useDeleteUserMutation } = adminApi

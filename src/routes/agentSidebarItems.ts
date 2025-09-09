@@ -1,9 +1,10 @@
+import AgentOverview from "@/pages/Agent/AgentOverview";
+import AgentTransactionhistory from "@/pages/Agent/AgentTransactionhistory";
 import CashIn from "@/pages/Agent/CashIn";
 import CashOut from "@/pages/Agent/CashOut";
 import GetCommission from "@/pages/Agent/GetCommission";
-import Overview from "@/pages/User/Overview";
 import UpdateUser from "@/pages/User/UpdateUser";
-import UserTransactionhistory from "@/pages/User/UserTransactionhistory";
+
 
 import type { ISidebarItem } from "@/types";
 
@@ -15,7 +16,7 @@ export const agentSidebarItems: ISidebarItem[]=[
         {
           title: "Overview",
           url: "/agent",
-          component: Overview
+          component: AgentOverview
         },
         {
           title: "Add money",
@@ -30,7 +31,7 @@ export const agentSidebarItems: ISidebarItem[]=[
         {
           title: "View all transactions",
           url: "/agent/transaction",
-          component: UserTransactionhistory
+          component: AgentTransactionhistory
         },
         {
           title: "Commission History",

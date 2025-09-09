@@ -12,37 +12,55 @@ export default function CashOut() {
     return (
         <div className="w-full max-w-7xl mx-auto px-5">
             <div className="flex justify-between my-8">
-                <h1 className="text-xl font-semibold">Cash Out</h1>
+                <h1 className="text-xl font-semibold">Withdraw Money</h1>
                 <div className="font-bold text-lg">
-                    Avilable Balance: Tk.  {balance?.balance ?? 0}.00
+                    Avilable Balance: Tk.  {balance?.balance ?? 0}
                 </div>
 
                 <CashoutModal />
             </div>
             <div className="border border-muted-foreground rounded-md">
                 <Table>
-                    <TableCaption>A list of your recent Cash Out.</TableCaption>
+                    <TableCaption></TableCaption>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="w-[100px]">Type</TableHead>
+                            <TableHead className="w-[100px]">Date</TableHead>
+                            {/* <TableHead className="text-right">Naration</TableHead> */}
+                            <TableHead className="text-right">Narration</TableHead>
+                            <TableHead className="text-right">Transaction Type</TableHead>
+                            <TableHead className="text-right">Debit</TableHead>
+                            <TableHead className="text-right">Credit</TableHead>
+                            <TableHead className="text-right">Balance</TableHead>
+                            {/* <TableHead className="w-[100px]">Type</TableHead>
                             <TableHead className="text-right">Amount</TableHead>
                             <TableHead className="text-right">Status</TableHead>
-                            <TableHead className="text-right">Time</TableHead>
+                            <TableHead className="text-right">Time</TableHead> */}
                         </TableRow>
                     </TableHeader>
                     <TableBody>
                         {
-                            data?.data?.map((item: { type: string, amount: string, status: string, updatedAt: string }) => (
+                            data?.data?.map((item: { type: string, debit: string, credit: string, amount: string, status: string, date: string, receiverWallet: string, balance: number }) => (
                                 <TableRow>
+                                    <TableCell className="">{new Date(item.date).toLocaleString()}</TableCell>
                                     <TableCell className="text-right">{item.type}</TableCell>
-                                    <TableCell className="text-right">{item.amount}</TableCell>
-                                    <TableCell className="text-right">{item.status}</TableCell>
-                                    <TableCell className="text-right">{new Date(item.updatedAt).toLocaleString()}</TableCell>
+                                    <TableCell className="text-right">
+                                        {(item.type === "withdraw" || item.type === "send" || item.type === "cash_out") ? "D" : "C"}
+                                    </TableCell>
+                                    {/* <TableCell className="text-right">{item.amount}</TableCell> */}
+                                    <TableCell className="text-right">
+                                        {(item.type === "withdraw" || item.type === "send" || item.type === "cash_out") ? item.debit : 0}
+                                    </TableCell>
+
+                                    <TableCell className="text-right">
+                                        {(item.type === "withdraw" || item.type === "send") ? 0 : item.credit}
+                                    </TableCell>
+                                    <TableCell className="text-right">{item?.balance}</TableCell>
                                 </TableRow>
                             ))
                         }
                     </TableBody>
                 </Table>
+
             </div>
         </div>
     );
